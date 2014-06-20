@@ -48,6 +48,10 @@ module Tracker
       update_labels(labels)
     end
 
+    def add_note(text)
+      @story.notes.create text: text, author: "MergeHook"
+    end
+
     private
 
     def label_set

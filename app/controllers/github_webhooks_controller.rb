@@ -8,7 +8,7 @@ class GithubWebhooksController < ActionController::Base
     if commit.merge_to_master?
       story = tracker_project.story(commit.story_id)
       story.finish
-      story.add_label "pull-request"
+      story.remove_label "pull-request"
     end
   end
 
@@ -18,7 +18,8 @@ class GithubWebhooksController < ActionController::Base
       pull_request = PullRequestCreator.new(payload, @project).run
       if pull_request
         story = tracker_project(pull_request.story_id)
-        # TODO: add comment to story
+        story.add_label "pull-request"
+        story.add_note "Pull Request [##{pull_request.number}](#{pull_request.url}] has been opened."
       end
     when "closed", "synchronize", "reopened"
       # Nothing yet
