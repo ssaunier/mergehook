@@ -2,6 +2,17 @@ require "set"
 require "pivotal-tracker"
 
 module Tracker
+  class Account
+    def initialize(token)
+      ::PivotalTracker::Client.token = token
+      ::PivotalTracker::Client.use_ssl = true
+    end
+
+    def projects
+      ::PivotalTracker::Project.all
+    end
+  end
+
   class Project
     def initialize(token, project_id)
       ::PivotalTracker::Client.token = token

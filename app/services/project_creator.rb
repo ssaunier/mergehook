@@ -13,8 +13,8 @@ class ProjectCreator
       client = Octokit::Client.new access_token: user.github_token
       begin
         client.hooks(project.repo)
-        #client.subscribe push_url(project), callback_url, project.github_webhook_secret
-        client.create_hook(project.repo,
+        # client.subscribe push_url(project), callback_url, project.github_webhook_secret
+        hook = client.create_hook(project.repo,
           'web',
           {
             url: callback_url,
@@ -25,6 +25,7 @@ class ProjectCreator
             events: [ :push ],
             active: true
           })
+        project.github_hook_id = hook["id"]
         project.save
       rescue Octokit::UnprocessableEntity, Octokit::NotFound => e
         project.errors.add :repo, "Could not add github webhook on repo: #{e}"

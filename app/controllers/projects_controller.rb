@@ -2,10 +2,13 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:destroy, :show]
 
   def index
+    @projects = current_user.projects
   end
 
   def new
     @project = current_user.projects.build
+    account = Tracker::Account.new(current_user.pivotal_tracker_api_token)
+    @tracker_projects = account.projects.map { |p| [ p.name, p.id ] }
   end
 
   def create
