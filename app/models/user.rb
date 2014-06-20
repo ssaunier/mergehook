@@ -4,15 +4,11 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:github]
 
   def self.find_for_github_oauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.email = auth.info.email
-      user.github_nickname = auth.info.nickname
-      user.name = auth.info.name
-      user.gravatar_url = auth.info.image
-      user.password = Devise.friendly_token[0,20]
-    end
+    user = where(email: auth.info.email).first
+    user ||= where(auth.slice(:provider, :uid)).first
+    user ||= User.new
+    store_github_info(user, auth)
+    user
   end
 
   def self.new_with_session(params, session)
@@ -22,4 +18,18 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  private
+
+    def self.store_github_info(user, auth)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.password = Devise.friendly_token[0,20]
+      user.email = auth.info.email
+      user.github_nickname = auth.info.nickname
+      user.name = auth.info.name
+      user.gravatar_url = auth.info.image
+      user.github_token = auth.credentials.token
+      user.save!
+    end
 end
