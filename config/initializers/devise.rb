@@ -5,7 +5,8 @@ require "omniauth-github"
 Devise.setup do |config|
 
   # GitHub app credentials for SSO
-  config.omniauth :github, ENV["GITHUB_APP_ID"], ENV["GITHUB_APP_SECRET"]
+  config.omniauth :github, ENV["GITHUB_APP_ID"], ENV["GITHUB_APP_SECRET"],
+                  scope: "user,admin:repo_hook"
 
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
