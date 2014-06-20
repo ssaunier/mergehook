@@ -38,7 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'github_webhook', '~> 0.1.1'
+gem 'github_webhook', '~> 0.2.0'
 gem 'pivotal-tracker', '~> 0.5.12'
 
 group :development, :test do

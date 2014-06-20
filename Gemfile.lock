@@ -41,7 +41,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.0)
-    github_webhook (0.1.1)
+    github_webhook (0.2.0)
       activesupport (~> 4)
     happymapper (0.4.1)
       libxml-ruby (~> 2.0)
@@ -154,7 +154,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  github_webhook (~> 0.1.1)
+  github_webhook (~> 0.2.0)
   jbuilder (~> 2.0)
   jquery-rails
   pg
