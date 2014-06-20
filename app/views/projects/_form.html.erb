@@ -1,0 +1,17 @@
+<%= form_for @project do |f| %>
+  <% f.object.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+
+  <%= f.label :repo %>
+  <%= f.text_field :repo %>
+
+  <br>
+
+  <%= f.label :tracker_project_id %>
+
+  <%= f.text_field :tracker_project_id %>
+
+  <br>
+  <%= f.submit %>
+<% end %>

@@ -31,6 +31,8 @@ gem 'omniauth-github'
 
 gem 'figaro', '~> 0.7.0'
 
+gem 'octokit', '~> 3.1.2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -47,5 +49,7 @@ gem 'github_webhook', '~> 0.2.0'
 gem 'pivotal-tracker', '~> 0.5.12'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'rspec-rails', '~> 3.0.0'
 end
