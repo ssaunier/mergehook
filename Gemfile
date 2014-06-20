@@ -39,6 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'github_webhook', '~> 0.1.1'
+gem 'pivotal-tracker', '~> 0.5.12'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
