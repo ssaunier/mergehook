@@ -22,7 +22,7 @@ class ProjectCreator
             secret: project.github_webhook_secret
           },
           {
-            events: [ :push ],
+            events: [ :push, :pull_request ],
             active: true
           })
         project.github_hook_id = hook["id"]

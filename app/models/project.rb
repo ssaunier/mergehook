@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :pull_requests
 
   before_validation :ensure_github_webhook_secret
 
