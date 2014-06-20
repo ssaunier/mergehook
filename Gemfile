@@ -38,3 +38,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'github_webhook', '~> 0.1.1'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
