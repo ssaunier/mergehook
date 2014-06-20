@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   devise :omniauthable, :omniauth_providers => [:github]
 
+  has_many :projects
+
   def self.find_for_github_oauth(auth)
     user = where(email: auth.info.email).first
     user ||= where(auth.slice(:provider, :uid)).first

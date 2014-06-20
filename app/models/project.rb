@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  belongs_to :user
+
   before_create :generate_github_webhook_secret
 
   validates_presence_of :repo, :tracker_project_id
