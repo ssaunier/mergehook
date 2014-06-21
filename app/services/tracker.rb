@@ -23,6 +23,10 @@ module Tracker
     def story(story_id)
       Story.new(@project, story_id)
     end
+
+    def self.from_project(project)
+      Tracker::Project.new(project.user.pivotal_tracker_api_token, project.tracker_project_id)
+    end
   end
 
   class Story
@@ -49,7 +53,7 @@ module Tracker
     end
 
     def add_note(text)
-      @story.notes.create text: text, author: "MergeHook"
+      @story.notes.create text: text
     end
 
     private

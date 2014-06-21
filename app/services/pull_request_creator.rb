@@ -1,14 +1,14 @@
-class PullRequestCreator
-  def initialize(pull_request_event_payload, project)
-    @payload = pull_request_event_payload
-    @project = project
-  end
-
+class PullRequestCreator < PullRequestActionBase
   def run
-    @project.pull_requests.create!(pull_request_params)
+    if @pull_request = @project.pull_requests.create(pull_request_params)
+      story.add_label LABEL
+      story.add_note "#{pull_request_markdown} has been opened."
+    end
   end
 
-  private
+  def pull_request
+    @pull_request
+  end
 
   def pull_request_params
     {

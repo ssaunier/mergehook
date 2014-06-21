@@ -1,0 +1,2 @@
+-> Listen to "Open PR" to add a label "pull-request" to the Pivotal Tracker Story
+-> When merging PR, should remove pull-request label as well.
