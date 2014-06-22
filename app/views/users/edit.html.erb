@@ -1,0 +1,18 @@
+<%= form_for current_user do |f| %>
+  <% f.object.errors.full_messages.each do |msg| %>
+    <p><%= msg %></p>
+  <% end %>
+
+  <%= f.label :pivotal_tracker_api_token %>
+
+  <%= f.text_field :pivotal_tracker_api_token %>
+
+  <br>
+
+  You can go to your <a href="https://www.pivotaltracker.com/profile" target="_blank">Pivotal Tracker Profile</a>
+  page and scroll right to the bottom. You'll find the token to copy paste.
+
+  <br>
+
+  <%= f.submit %>
+<% end %>

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :ensure_current_user_pivotal_tracker_api_token, only: :index
   before_action :set_project, only: :destroy
   before_action :set_tracker_projects, only: [:index, :new, :create]
 
@@ -32,11 +33,19 @@ class ProjectsController < ApplicationController
   end
 
   def set_tracker_projects
+    return unless current_user.pivotal_tracker_api_token
     account = Tracker::Account.new(current_user.pivotal_tracker_api_token)
     @tracker_projects = account.projects.map { |p| [ p.name, p.id ] }
   end
 
   def project_params
     params.require(:project).permit(:repo, :tracker_project_id)
+  end
+
+  def ensure_current_user_pivotal_tracker_api_token
+    if current_user.pivotal_tracker_api_token.blank?
+      redirect_to edit_user_path(current_user), alert: "Please set up your Pivotal Tracker API token first."
+      false
+    end
   end
 end

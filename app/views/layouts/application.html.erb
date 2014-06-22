@@ -9,10 +9,14 @@
 <body>
 
   <% if user_signed_in? %>
+    <%= link_to(current_user.github_nickname, edit_user_path(current_user)) %>
     <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
   <% end %>
 
-<%= yield %>
+  <p><%= flash[:alert] %></p>
+  <p><%= flash[:notice] %></p>
+
+  <%= yield %>
 
 </body>
 </html>
