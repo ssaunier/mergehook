@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   def create
     @project = ProjectCreator.new(project_params).run(current_user)
     if @project.persisted?
-      redirect_to project_path(@project.id)
+      redirect_to projects_path
     else
       render :new
     end

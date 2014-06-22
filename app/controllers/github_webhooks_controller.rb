@@ -24,6 +24,8 @@ class GithubWebhooksController < ActionController::Base
   end
 
   def webhook_secret(payload)
+    return params[:hook][:config][:secret] if params[:zen]
+
     repo = pull_request_payload_repo(payload)
     @project = Project.find_by_repo(repo)
     raise ActiveRecord::RecordNotFound.new("No project named #{repo} found") unless @project
