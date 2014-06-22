@@ -1,10 +1,23 @@
-<table>
-  <%= @projects.each do |project| %>
-  <tr>
-    <td><%= project.repo %></td>
-    <td>
-      <%= link_to "Delete", project_path(project), method: :delete, confirm: "Are you sure?" %>
-    </td>
-  </tr>
-  <% end %>
-</table>
+<% if @projects.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>GitHub</th>
+        <th>Pivotal Tracker</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+      <tr>
+        <td><%= repo_url project.repo %></td>
+        <td><%= pivotal_tracker_project_url(project.tracker_project_id, @tracker_projects) %></td>
+        <td>
+          <%= link_to "Delete", project_path(project), method: :delete, confirm: "Are you sure?" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<%= link_to "New project", new_project_path %>

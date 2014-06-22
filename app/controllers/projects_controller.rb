@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:destroy, :show]
+  before_action :set_project, only: :destroy
+  before_action :set_tracker_projects, only: [:index, :new, :create]
 
   def index
     @projects = current_user.projects
@@ -7,8 +8,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
-    account = Tracker::Account.new(current_user.pivotal_tracker_api_token)
-    @tracker_projects = account.projects.map { |p| [ p.name, p.id ] }
   end
 
   def create
@@ -18,10 +17,6 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-
   end
 
   def destroy
@@ -34,6 +29,11 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = current_user.projects.find(params[:id])
+  end
+
+  def set_tracker_projects
+    account = Tracker::Account.new(current_user.pivotal_tracker_api_token)
+    @tracker_projects = account.projects.map { |p| [ p.name, p.id ] }
   end
 
   def project_params
