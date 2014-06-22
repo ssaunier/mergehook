@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   resource :github_webhooks, only: :create, defaults: { formats: :json }
 
-  root to: "projects#index"
+  root to: "home#index"
 end
