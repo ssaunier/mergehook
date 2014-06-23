@@ -31,7 +31,7 @@ module Tracker
 
   class Story
     def initialize(project, story_id)
-      @story = project.stories.find(story_id)
+      @story = project.stories.find(story_id.to_i)
     end
 
     def finish
