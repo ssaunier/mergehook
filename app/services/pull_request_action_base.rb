@@ -6,6 +6,10 @@ class PullRequestActionBase
     @project = project
   end
 
+  def story_id
+    @payload[:pull_request][:head][:ref][/#?(\d{6,10})/, 1]
+  end
+
   private
 
   def pull_request

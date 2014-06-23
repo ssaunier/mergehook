@@ -1,5 +1,7 @@
 class PullRequestCreator < PullRequestActionBase
   def run
+    return if story_id.blank?
+
     if @pull_request = @project.pull_requests.create(pull_request_params)
       story.add_label LABEL
       story.add_note "#{pull_request_markdown} has been opened."
@@ -17,7 +19,7 @@ class PullRequestCreator < PullRequestActionBase
       author: @payload[:pull_request][:head][:user][:login],
       title:  @payload[:pull_request][:title],
       body:   @payload[:pull_request][:body],
-      story_id: @payload[:pull_request][:head][:ref][/#?(\d{6,10})/, 1]
+      story_id: story_id
     }
   end
 end

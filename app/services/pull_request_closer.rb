@@ -1,6 +1,6 @@
 class PullRequestCloser < PullRequestActionBase
   def run
-    return unless pull_request
+    return if story_id.blank? || pull_request.nil?
 
     client = Octokit::Client.new access_token: @project.user.github_token
     if client.pull_merged?(@project.repo, pull_request.number)
