@@ -25,7 +25,7 @@ module Tracker
     end
 
     def self.from_project(project)
-      Tracker::Project.new(project.user.pivotal_tracker_api_token, project.tracker_project_id)
+      Tracker::Project.new(project.user.pivotal_tracker_api_token, project.tracker_project_id.to_i)
     end
   end
 
