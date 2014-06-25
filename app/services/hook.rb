@@ -6,7 +6,7 @@ module Hook
     Rails.env.production? ? github_webhooks_url(host: ENV['HOST'], protocol: ENV['PROTOCOL']) : github_webhooks_url(host: ENV['ULTRAHOOK'], port: 80)
   end
 
-  def push_url(project)
-    "https://github.com/#{project.repo}/events/push.json"
+  def pull_request_url(project)
+    "https://github.com/#{project.repo}/events/pull_request.json"
   end
 end
