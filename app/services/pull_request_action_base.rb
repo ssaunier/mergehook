@@ -13,7 +13,21 @@ class PullRequestActionBase
   private
 
   def pull_request
-    @pull_request ||= @project.pull_requests.find_by_number(@payload[:number])
+    @pull_request ||= (
+      @project.pull_requests.find_by_number(@payload[:number]) ||
+        @project.pull_requests.create!(pull_request_params)
+    )
+  end
+
+  def pull_request_params
+    {
+      number: @payload[:number],
+      branch: @payload[:pull_request][:head][:ref],
+      author: @payload[:pull_request][:head][:user][:login],
+      title:  @payload[:pull_request][:title],
+      body:   @payload[:pull_request][:body],
+      story_id: story_id
+    }
   end
 
   def story
