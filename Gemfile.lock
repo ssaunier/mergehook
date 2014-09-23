@@ -67,6 +67,9 @@ GEM
       libxml-ruby (~> 2.0)
     hashie (2.1.1)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     jbuilder (2.1.1)
       activesupport (>= 3.0.0, < 5)
@@ -153,6 +156,10 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
     rake (10.3.2)
+    raygun4ruby (1.1.4)
+      httparty (~> 0.11)
+      json
+      rack
     rdoc (4.1.1)
       json (~> 1.4)
     rest-client (1.6.7)
@@ -236,6 +243,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.1.1)
   rails_12factor
+  raygun4ruby
   rspec-rails (~> 3.0.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

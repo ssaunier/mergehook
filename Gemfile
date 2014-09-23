@@ -49,6 +49,8 @@ gem 'rails_12factor', group: :production
 gem 'github_webhook', '~> 0.2.0'
 gem 'pivotal-tracker', '~> 0.5.12'
 
+gem 'raygun4ruby'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
