@@ -33,8 +33,7 @@ class GithubWebhooksController < ActionController::Base
   private
 
   def pull_request_payload_repo(payload)
-    return payload[:repository][:full_name] if params[:zen]
-    "#{payload[:pull_request][:base][:repo][:owner][:login]}/#{payload[:pull_request][:base][:repo][:name]}"
+    (params[:zen] ? payload[:repository][:full_name] : payload[:pull_request][:base][:repo][:full_name]).downcase
   end
 
 end

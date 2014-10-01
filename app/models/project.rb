@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :pull_requests
 
   before_validation :ensure_github_webhook_secret
+  before_validation :downcase_repo
 
   validates_format_of :repo, with: /\A[^\/]+\/[^\/]+\Z/
   validates_presence_of :repo, :tracker_project_id
@@ -12,5 +13,9 @@ class Project < ActiveRecord::Base
 
   def ensure_github_webhook_secret
     self.github_webhook_secret ||= (0...40).map { (33 + rand(93)).chr }.join
+  end
+
+  def downcase_repo
+    self.repo = repo.downcase
   end
 end

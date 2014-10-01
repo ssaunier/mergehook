@@ -6,4 +6,10 @@ RSpec.describe Project, :type => :model do
     project.save!
     expect(project.reload.github_webhook_secret.length).to eq 40
   end
+
+  it "should downcase repo before validation" do
+    project = Project.new repo: "SsauNier/TesT", tracker_project_id: "123"
+    project.valid?
+    expect(project.repo).to eq "ssaunier/test"
+  end
 end
