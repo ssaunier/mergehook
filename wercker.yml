@@ -40,7 +40,7 @@ build:
 
 deploy:
     steps:
-        - heroku-deploy
+        - heroku-deploy:
             key-name: HEROKU_KEY
             install-toolbelt: true
             run: bundle exec rake db:migrate
