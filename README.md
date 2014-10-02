@@ -1,3 +1,5 @@
+[![wercker status](https://app.wercker.com/status/c7671ca78409ca2d72e52eb41b3aa34d/m "wercker status")](https://app.wercker.com/project/bykey/c7671ca78409ca2d72e52eb41b3aa34d)
+
 This small app does one thing, it connects Pivotal Tracker and GitHub to
 synchronize your Pull Requests with the state of each story. It is particularly
 helpful if your use the [GitHub flow](https://guides.github.com/introduction/flow/index.html)
