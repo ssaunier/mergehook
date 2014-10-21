@@ -1,3 +1,46 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.container-github-connect{
+  padding-bottom: 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  height: 300px;
+}
+.github-btn{
+  background-color: #373737;
+  border: 4px solid #373737;
+  color: white;
+  margin: auto;
+  display: block;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1.4em;
+  transition: border 0.3s ease;
+  border-radius: 50px;
+  margin-top: 10px;
+}
+
+
+.github-btn:hover{
+  color: white;
+  text-decoration: none;
+  border: 4px solid #232323;
+
+
+}
+
+.logo-mergehook{
+  text-align: center;
+  font-weight: bold;
+  font-size: 5em;
+  font-family: "Inder";
+}
