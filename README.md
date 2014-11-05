@@ -13,3 +13,10 @@ If [you have the story id in the branch name](https://github.com/stevenharman/gi
 - Remove the label if the Pull Request is merged
 
 That's it! You can use it right now with the [hosted app](https://mergehook.herokuapp.com)
+
+To get running on Heroku, 
+
+- Check out this repo
+- Add the remote for the heroku app: heroku git:remote -a appName
+- Push the repo to heroku: git push heroku master
+- Run the migrations: heroku run bundle exec rake db:migrate
