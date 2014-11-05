@@ -20,3 +20,5 @@ To get running on Heroku,
 - Add the remote for the heroku app: heroku git:remote -a appName
 - Push the repo to heroku: git push heroku master
 - Run the migrations: heroku run bundle exec rake db:migrate
+- Add GITHUB_APP_ID, GITHUB_APP_SECRET variables in Heroku (from the Applications page in GitHub)
+- Add HOST (yourapp.herokuapp.com) and PROTOCOL (https) variables in Heroku
