@@ -33,7 +33,13 @@ module Tracker
     def initialize(project, story_id)
       @story = project.stories.find(story_id.to_i)
     end
-
+    
+    def start
+      if %w(unscheduled unstarted).include?(@story.current_state)
+        @story.update(current_state: "started")
+      end
+    end
+    
     def finish
       if %w(unscheduled unstarted started).include?(@story.current_state)
         @story.update(current_state: "finished")
