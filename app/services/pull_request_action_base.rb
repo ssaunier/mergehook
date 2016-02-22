@@ -1,3 +1,5 @@
+require "octokit"
+
 class PullRequestActionBase
   LABEL = "pull-request"
 
