@@ -36,7 +36,8 @@ module Tracker
 
     def finish
       if %w(unscheduled unstarted started).include?(@story.current_state)
-        @story.update(current_state: "finished")
+        # @story.update(current_state: "finished")
+        @story.update(current_state: "delivered")
       end
     end
 
