@@ -34,10 +34,15 @@ module Tracker
       @story = project.stories.find(story_id.to_i)
     end
 
-    def finish
+    def deliver
       if %w(unscheduled unstarted started finished).include?(@story.current_state)
-        # @story.update(current_state: "finished")
         @story.update(current_state: "delivered")
+      end      
+    end
+
+    def finish
+      if %w(unscheduled unstarted started).include?(@story.current_state)
+        @story.update(current_state: "finished")
       end
     end
 
