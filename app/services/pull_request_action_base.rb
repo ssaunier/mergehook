@@ -36,10 +36,6 @@ class PullRequestActionBase
     @story ||= Tracker::Project.from_project(@project).story(pull_request.story_id)
   end
 
-  def client
-    @client ||= Octokit::Client.new access_token: @project.user.github_token
-  end
-
   def pull_request_markdown
     "Pull Request [##{pull_request.number}](#{pull_request.url})"
   end
