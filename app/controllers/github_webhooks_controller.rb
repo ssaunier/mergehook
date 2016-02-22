@@ -16,9 +16,8 @@ class GithubWebhooksController < ActionController::Base
       PullRequestCreator.new(payload, @project).run
     when "closed"
       PullRequestCloser.new(payload, @project).run
-    # no need to add comment that we updated PR
-    # when "synchronize"
-    #   PullRequestUpdater.new(payload, @project).run
+    when "synchronize"
+      PullRequestUpdater.new(payload, @project).run
     when "reopened"
       PullRequestReopener.new(payload, @project).run
     end
