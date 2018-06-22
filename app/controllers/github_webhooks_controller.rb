@@ -1,16 +1,7 @@
 class GithubWebhooksController < ActionController::Base
   include GithubWebhook::Processor
 
-  # def push(payload)
-  #   commit = Commit.new(payload)
-  #   if commit.merge_to_master?
-  #     story = tracker_project.story(commit.story_id)
-  #     story.finish
-  #     story.remove_label "pull-request"
-  #   end
-  # end
-
-  def pull_request(payload)
+  def github_pull_request(payload)
     case payload[:action]
     when "opened"
       PullRequestCreator.new(payload, @project).run
