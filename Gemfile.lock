@@ -43,9 +43,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    appsignal (0.10.6)
+    appsignal (2.6.1)
       rack
-      thread_safe
     arel (9.0.0)
     bcrypt (3.1.12)
     better_errors (1.1.0)
@@ -295,4 +294,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
